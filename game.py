@@ -6,8 +6,8 @@ class Game:
         self.player_name = player_name
         self.chips = starting_chips
         self.deck = []
-        for suit in Card.suits:
-            for rank in Card.ranks:
+        for suit in Card.SUITS:
+            for rank in Card.RANKS:
                 self.deck.append(Card(rank, suit))
 
     def __str__(self):
