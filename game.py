@@ -6,10 +6,7 @@ class Game:
         self.player_name = player_name
         self.chips = starting_chips
         self.deck = []
-        for suit in Card.SUITS:
-            for rank in Card.RANKS:
-                self.deck.append(Card(rank, suit))
-
+        
     def __str__(self):
         value = self.player_name+": "+str(self.chips)+" chips"
         for card in self.deck:
@@ -28,6 +25,12 @@ class Game:
             while copyed_cards[random_card]:
                 random_card = random.randint(0,len(old_deck)-1)
             self.deck.append(old_deck[random_card])
+
+    def fill_deck(self):
+        for suit in Card.SUITS:
+            for rank in Card.RANKS:
+                self.deck.append(Card(rank, suit))
+
 
     def draw_card(self):
         return self.deck.pop(0)
