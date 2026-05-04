@@ -9,13 +9,12 @@ class Button:
             self.size = self.surface.get_size()
         self.surface = pygame.transform.scale(self.surface, self.size)
         self.position = position
-        self.rect = self.surface.get_rect
+        self.rect = self.surface.get_rect().move(self.position[0], self.position[1])
         self.is_rendered = False
 
-    def is_pressed(self, mouse_pos):
+    def is_touching_mouse(self, mouse_pos):
         if self.is_rendered:
-            if self.rect.collidepoint(mouse_pos):
-                return True
+            return self.rect.collidepoint(mouse_pos)
         return False
 
     def render(self, screen):

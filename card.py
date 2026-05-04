@@ -1,16 +1,14 @@
 class Card:
-    _SUITS = ["spades", "clubs", "hearts", "diamonds"]
-    _RANKS = ["2", "3", "4", "5", "6", "7", "8", "9", "10", "jack", "queen", "king", "ace"]
-    SUITS = ["S", "C", "H", "D"]
-    RANKS = ["2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "Q", "K", "A"]
+    _FILE_SUITS = ["spades", "clubs", "hearts", "diamonds"]
+    _FILE_RANKS = ["2", "3", "4", "5", "6", "7", "8", "9", "10", "jack", "queen", "king", "ace"]
+    _RANK_VALUES = [2, 3, 4, 5, 6, 7, 8, 9, 10, 10, 10, 10, 11]
+    _SUITS = ["S", "C", "H", "D"]
+    _RANKS = ["2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "Q", "K", "A"]
 
-    def __new__(cls, rank, suit="S"):
+    def __new__(cls, rank, suit):
         try:
-            Card.RANKS.index(rank)
-        except:
-            return None
-        try:
-            Card.SUITS.index(suit)
+            Card._RANKS.index(rank)
+            Card._SUITS.index(suit)
         except:
             return None
         return super(Card, cls).__new__(cls)
@@ -18,7 +16,7 @@ class Card:
     def __init__(self, rank, suit):
         self.rank = rank
         self.suit = suit
-        self.texture = Card._RANKS[Card.RANKS.index(self.rank)]+"_of_"+Card._SUITS[Card.SUITS.index(self.suit)]+".png"
+        self.texture = Card._FILE_RANKS[Card._RANKS.index(self.rank)]+"_of_"+Card._FILE_SUITS[Card._SUITS.index(self.suit)]+".png"
 
     def __str__(self):
-        return self.texture
+        return f"Suit: {self.suit} Rank: {self.rank}"
