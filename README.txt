@@ -1,4 +1,4 @@
 If you want to actually see what the code does you'll have to use the commands
-~~~make~~~
-~~~make run~~~
+'''make'''
+'''make run'''
 since Docker can't create gui's without external software
