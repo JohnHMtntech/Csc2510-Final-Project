@@ -7,7 +7,7 @@ from button import Button
 class Graphics:
     CARD_SCALE = .4
     CARD_SIZE = (500*CARD_SCALE,726*CARD_SCALE)
-    CARD_BACK_IMAGE = pygame.image.load("assets\\cards\\card_back.png")
+    CARD_BACK_IMAGE = pygame.image.load("assets/cards/card_back.png")
 
     def __init__(self):
         #Initalize pygame
@@ -16,7 +16,7 @@ class Graphics:
 
         #Create window
         pygame.display.set_caption("Blackjack")
-        pygame.display.set_icon(pygame.image.load("assets\\cards\\card_back.png"))
+        pygame.display.set_icon(pygame.image.load("assets/cards/card_back.png"))
         self.screen = pygame.display.set_mode((1280, 720), pygame.SCALED | pygame.RESIZABLE)
         self.clock = pygame.time.Clock()
         self.running = True
@@ -52,10 +52,10 @@ class Graphics:
         bet = "0"
         invalid_value = "1"
 
-        hit_button = Button("assets\\hit.png", (160,90), (1100,600))
-        stand_button = Button("assets\\stand.png", (160,90), (1100,500))
-        double_down_button = Button("assets\\double_down.png", (160,90), (1100,400))
-        split_button = Button("assets\\split.png", (160,90), (1100,300))
+        hit_button = Button("assets/hit.png", (160,90), (1100,600))
+        stand_button = Button("assets/stand.png", (160,90), (1100,500))
+        double_down_button = Button("assets/double_down.png", (160,90), (1100,400))
+        split_button = Button("assets/split.png", (160,90), (1100,300))
 
         while self.running:
             #Refill deck
@@ -87,7 +87,7 @@ class Graphics:
                             self.main_game.second_player_hand.append(self.main_game.current_player_hand.pop(1))
 
             #Apply background
-            self.screen.blit(pygame.transform.scale(pygame.image.load("assets\\wood_texture.jpg"), self.screen.get_size()), (0,0))
+            self.screen.blit(pygame.transform.scale(pygame.image.load("assets/wood_texture.jpg"), self.screen.get_size()), (0,0))
 
             #Key handling
             keys = pygame.key.get_pressed()
@@ -223,15 +223,15 @@ class Graphics:
                 #Dealer's hand
                 if self.round_ended:
                     for i in range(len(self.main_game.dealer_hand)):
-                        self.screen.blit(pygame.transform.scale(pygame.image.load("assets\\cards\\"+self.main_game.dealer_hand[i].texture), Graphics.CARD_SIZE), (300+50*i,10))
+                        self.screen.blit(pygame.transform.scale(pygame.image.load("assets/cards/"+self.main_game.dealer_hand[i].texture), Graphics.CARD_SIZE), (300+50*i,10))
                 else:
-                    self.screen.blit(pygame.transform.scale(pygame.image.load("assets\\cards\\"+self.main_game.dealer_hand[0].texture), Graphics.CARD_SIZE), (300,10))
+                    self.screen.blit(pygame.transform.scale(pygame.image.load("assets/cards/"+self.main_game.dealer_hand[0].texture), Graphics.CARD_SIZE), (300,10))
                     for i in range(len(self.main_game.dealer_hand)-1):
                         self.screen.blit(pygame.transform.scale(Graphics.CARD_BACK_IMAGE, Graphics.CARD_SIZE), (350+50*i,10))
                 
                 #Player's cards
                 for i in range(len(self.main_game.current_player_hand)):
-                    self.screen.blit(pygame.transform.scale(pygame.image.load("assets\\cards\\"+self.main_game.current_player_hand[i].texture), Graphics.CARD_SIZE), (300+50*i,400))
+                    self.screen.blit(pygame.transform.scale(pygame.image.load("assets/cards/"+self.main_game.current_player_hand[i].texture), Graphics.CARD_SIZE), (300+50*i,400))
             
             pygame.display.flip()
 
